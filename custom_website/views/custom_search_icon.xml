@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Replace Wishlist icon in header -->
+    <template id="custom_website_header_search_box" inherit_id="website.header_search_box"
+              name="Custom Header - search icon">
+        <xpath expr="//a" position="replace">
+
+            <a t-attf-class="btn rounded-circle p-1 lh-1 #{_button_classes or 'bg-o-color-3'} o_not_editable"
+               data-bs-target="#o_search_modal" data-bs-toggle="modal" role="button" title="Search" href="#">
+                <!--                <i class="oi oi-search fa-stack lh-lg"/>-->
+                <i t-field="website.search_icon"
+                   t-options="{'widget': 'image', 'width': 21, 'height': 21}" role="img"/>
+            </a>
+        </xpath>
+    </template>
+
+
+    <template id="custom_website_search_box" inherit_id="website.website_search_box"
+              name="Custom Header - search box icon">
+        <xpath expr="//button" position="replace">
+            <button type="submit" t-att-class="'btn oe_search_button %s' % (_submit_classes or 'btn-light')"
+                    aria-label="Search" title="Search">
+                 <i t-field="website.search_icon"
+                   t-options="{'widget': 'image', 'width': 21, 'height': 21}" role="img"/>
+                <span t-if="search" class="oe_search_found">
+                    <small>(
+                        <t t-out="search_count or 0"/>
+                        found)
+                    </small>
+                </span>
+            </button>
+        </xpath>
+    </template>
+</odoo>

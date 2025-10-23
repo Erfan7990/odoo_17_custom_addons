@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-     <!-- Replace cart icon in header -->
+    <!-- Replace cart icon in header -->
     <template id="header_cart_link" inherit_id="website_sale.header_cart_link" name="Custom Header - Cart icon">
         <xpath expr="//a" position="replace">
             <!--            <img src="/web/image/custom_website.img_shopping" alt="shopping icon"/>-->
@@ -17,6 +17,24 @@
                          t-att-data-order-id="request.session.get('sale_order_id', '')"/>
                 </div>
                 <span t-if="_text" t-attf-class="#{_text_class}">My Cart</span>
+            </a>
+        </xpath>
+    </template>
+
+
+    <!-- Replace Wishlist icon in header -->
+    <template id="custom_header_wishlist_link" inherit_id="website_sale_wishlist.header_wishlist_link"
+              name="Custom Header - Wishlist icon">
+        <xpath expr="//a" position="replace">
+
+            <a href="/shop/wishlist" t-attf-class="#{_link_class}">
+                <div t-attf-class="#{_icon_wrap_class}">
+                    <i t-if="_icon" t-field="website.wishlist_icon"
+                       t-options="{'widget': 'image', 'width': 21, 'height': 21}" role="img"/>
+                    <sup t-esc="wishcount"
+                         t-attf-class="my_wish_quantity o_animate_blink badge text-bg-primary #{_badge_class}"/>
+                </div>
+                <span t-if="_text" t-attf-class="#{_text_class}">Wishlist</span>
             </a>
         </xpath>
     </template>

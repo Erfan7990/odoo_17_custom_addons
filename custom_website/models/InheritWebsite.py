@@ -39,6 +39,8 @@ class InheritWebsite(models.Model):
             return base64.b64encode(f.read())
 
     cart_icon = fields.Binary('Cart', help="Display this cart icon on the website.")
+    wishlist_icon = fields.Binary('wishlist icon', help="Display this cart icon on the website.")
+    search_icon = fields.Binary('Search icon', help="Display this cart icon on the website.")
     hamburger_icon = fields.Binary('Hamburger', help="Display this Hamburger icon on the website.")
     navbar_icon_svg = fields.Binary(
         string="Navbar Icon (SVG)",

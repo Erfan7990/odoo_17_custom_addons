@@ -26,6 +26,7 @@ Long description of module's purpose
         # 'views/views.xml',
         'views/templates.xml',
         'views/Inherit_portal_template.xml',
+        'views/custom_search_icon.xml',
         'views/custom_header_cart_link.xml',
         'views/custom_hambarger.xml',
     ],
