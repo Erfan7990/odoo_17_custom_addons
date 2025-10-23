@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="custom_user_dropdown" inherit_id="portal.user_dropdown" name="Custom Portal User Dropdown">
+        <xpath expr="//div[@t-if='_icon']" position="replace">
+            <div t-if="_icon" t-attf-class="#{_icon_wrap_class}">
+                <t t-if="website and website.navbar_icon_svg">
+                    <img t-att-src="'data:image/svg+xml;base64,%s' % website.navbar_icon_svg.decode('utf-8')"
+                         alt="Navbar Icon"
+                         class="o_navbar_icon_svg"
+                         width="22"
+                         height="21"/>
+                </t>
+                <t t-else="">
+                    <i t-attf-class="fa fa-1x fa-fw fa-user #{_icon_class}"/>
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+
+    <record id="view_website_form_inherit_svg_icon" model="ir.ui.view">
+        <field name="name">website.form.inherit.navbar.svg</field>
+        <field name="model">website</field>
+        <field name="inherit_id" ref="website.view_website_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='domain']//field[@name='language_ids']" position="after">
+                <field name="navbar_icon_svg" widget="image" class="oe_avatar w-auto float-start"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

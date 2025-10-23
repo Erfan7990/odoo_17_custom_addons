@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+     <!-- Replace cart icon in header -->
+    <template id="header_cart_link" inherit_id="website_sale.header_cart_link" name="Custom Header - Cart icon">
+        <xpath expr="//a" position="replace">
+            <!--            <img src="/web/image/custom_website.img_shopping" alt="shopping icon"/>-->
+            <a href="/shop/cart" t-attf-class="#{_link_class}" data-name="Cart">
+                <div t-attf-class="#{_icon_wrap_class}">
+                    <i t-if="_icon" t-field="website.cart_icon"
+                       t-options="{'widget': 'image', 'width': 21, 'height': 21}" role="img"
+                       t-att-aria-label="'Icon of %s' % website.name"
+                       t-att-title="Cart"
+                       data-name="Cart"
+                    />
+                    <sup t-attf-class="my_cart_quantity badge text-bg-primary #{_badge_class} #{'d-none' if (website_sale_cart_quantity == 0) else ''}"
+                         t-esc="website_sale_cart_quantity"
+                         t-att-data-order-id="request.session.get('sale_order_id', '')"/>
+                </div>
+                <span t-if="_text" t-attf-class="#{_text_class}">My Cart</span>
+            </a>
+        </xpath>
+    </template>
+
+</odoo>

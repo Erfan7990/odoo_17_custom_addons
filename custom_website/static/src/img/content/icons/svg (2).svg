@@ -1,0 +1,15 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <rect fill="#cccccc" x="248" y="86" width="386" height="81" id="svg_15" stroke="#000"/>
+  <rect fill="#000" x="417" y="115" width="43" height="5" id="svg_5"/>
+  <rect fill="#000" x="563" y="120" width="15" height="4" id="svg_6"/>
+  <rect fill="#000" x="297" y="128" width="15" height="4" id="svg_9"/>
+  <rect fill="#000" x="434" y="131" width="15" height="4" id="svg_10"/>
+  <rect fill="#000" x="461" y="132" width="15" height="4" id="svg_11"/>
+  <rect fill="#000" x="538" y="120" width="15" height="4" id="svg_12"/>
+  <rect fill="#000" x="403" y="132" width="15" height="4" id="svg_13"/>
+  <rect fill="#000" x="297" y="122" width="15" height="4" id="svg_14"/>
+ </g>
+
+</svg>

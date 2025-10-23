@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- HEADER -->
+    <!-- Add option header -->
+    <template id="template_header_opt" inherit_id="website.snippet_options" name="Vertical Hamburger - Option">
+        <xpath expr="//we-select[@data-variable='header-template']" position="inside">
+            <we-button title="Vertical Hamburger"
+                       data-name="custom_hamburger_vertical_opt"
+                       data-trigger="regular_header_visibility_opt"
+                       data-customize-website-views="custom_website.custom_hamburger_vertical_template"
+                       data-customize-website-variable="'vertical_hamburger'"
+                       data-img="/custom_website/static/src/img/wbuilder/template-header-opt.svg"/>
+        </xpath>
+    </template>
+
+    <template id="custom_hamburger_vertical_template" inherit_id="website.layout" name="Vertical Hamburger"
+              active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+                <t t-set="_navbar_classes" t-valuef="d-none d-lg-block pt-3  shadow-sm"/>
+                <t t-set="_navbar_expand_class" t-valuef="navbar-expand-lg"/>
+                <div id="o_main_nav" class="o_main_nav container d-grid py-0 o_grid_header_3_cols">
+                    <!-- Nav Toggler -->
+                    <t t-call="website.navbar_toggler">
+                        <t t-set="_toggler_class" t-valuef="btn me-auto p-2"/>
+                    </t>
+
+                    <ul class="navbar-nav navbar-expand-lg d-flex flex-column justify-content-center align-items-center show">
+
+                        <!-- Brand -->
+                        <t t-call="website.placeholder_header_brand">
+                            <t t-set="_link_class" t-valuef="mx-auto my-0 mw-100"/>
+                        </t>
+                        <!-- Navbar -->
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef="mt-0"/>
+
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+                    </ul>
+
+                    <ul class="o_header_hamburger_right_col navbar-nav flex-row gap-2 align-items-center ms-auto">
+                        <!-- Shopping cart -->
+                        <t t-call="website_sale.header_cart_link">
+                            <t t-set="_icon" t-value="True"/>
+                            <t t-set="_item_class" t-valuef="nav-item"/>
+                            <t t-set="_link_class" t-valuef="nav-link py-3"/>
+                        </t>
+                        <!-- Wishlist icon -->
+                        <t t-call="website_sale_wishlist.header_wishlist_link">
+                            <t t-set="_icon" t-value="True"/>
+                            <t t-set="_item_class" t-valuef="nav-item me-lg-3"/>
+                            <t t-set="_link_class" t-valuef="nav-link py-3"/>
+                        </t>
+
+                        <!-- Sign In -->
+                        <t t-call="portal.placeholder_user_sign_in">
+                            <t t-set="_link_class" t-valuef="o_navlink_background_hover btn rounded-circle text-reset"/>
+                        </t>
+                        <!-- User Dropdown -->
+                        <t t-call="portal.user_dropdown">
+                            <t t-set="_icon" t-value="true"/>
+                            <t t-set="_item_class" t-valuef="dropdown"/>
+                            <t t-set="_icon_class" t-valuef="fa-stack"/>
+                            <t t-set="_link_class"
+                               t-valuef="o_navlink_background_hover btn d-flex align-items-center rounded-circle p-1 pe-2 text-reset"/>
+                            <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                        </t>
+                    </ul>
+                    <div class="offcanvas offcanvas-start o_navbar_mobile" id="top_menu_collapse">
+                        <div class="offcanvas-header justify-content-end">
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"/>
+                        </div>
+                        <div class="offcanvas-body d-flex flex-column justify-content-between">
+                            <ul class="navbar-nav">
+                                <!-- Search bar -->
+                                <t t-call="website.placeholder_header_search_box">
+                                    <t t-set="_input_classes" t-valuef="rounded-start-pill ps-3 text-bg-light"/>
+                                    <t t-set="_submit_classes" t-valuef="rounded-end-pill bg-o-color-3"/>
+                                    <t t-set="limit" t-valuef="0"/>
+                                </t>
+
+                                <!-- Text element -->
+                                <t t-call="website.placeholder_header_text_element">
+                                    <t t-set="_txt_elt_content" t-valuef="phone_mail"/>
+                                    <t t-set="_div_class" t-valuef="mt-2 border-top pt-2 o_border_contrast"/>
+                                </t>
+                                <!-- Social -->
+                                <t t-call="website.placeholder_header_social_links">
+                                    <t t-set="_div_class" t-valuef="mt-2 border-top pt-2 o_border_contrast"/>
+                                </t>
+                            </ul>
+                            <ul class="navbar-nav gap-2 mt-3 w-100">
+                                <!-- Language Selector -->
+                                <t t-call="website.placeholder_header_language_selector">
+                                    <t t-set="_btn_class"
+                                       t-valuef="btn-outline-secondary d-flex align-items-center w-100"/>
+                                    <t t-set="_txt_class" t-valuef="me-auto small"/>
+                                    <t t-set="_flag_class" t-valuef="me-2"/>
+                                    <t t-set="_div_classes" t-valuef="dropup"/>
+                                    <t t-set="_dropdown_menu_class" t-valuef="w-100"/>
+                                </t>
+                                <!-- Call To Action -->
+                                <t t-call="website.header_call_to_action_large"/>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </t>
+            <t t-call="website.template_header_mobile"/>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Navbar Custom Icon Upload -->
+    <template id="custom_navbar_toggler" inherit_id="website.navbar_toggler" name="Custom Navbar Toggler">
+        <xpath expr="//button[@type='button']" position="replace">
+            <button type="button" t-attf-class="navbar-toggler #{_toggler_class}"
+                    data-bs-toggle="offcanvas" data-bs-target="#top_menu_collapse" aria-controls="top_menu_collapse">
+                <span t-field="website.hamburger_icon"
+                      t-options="{'widget': 'image', 'width': 40, 'height': 39}" role="img"
+                />
+            </button>
+        </xpath>
+
+    </template>
+
+</odoo>
