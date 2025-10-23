@@ -20,8 +20,15 @@
         <xpath expr="//button" position="replace">
             <button type="submit" t-att-class="'btn oe_search_button %s' % (_submit_classes or 'btn-light')"
                     aria-label="Search" title="Search">
-                 <i t-field="website.search_icon"
-                   t-options="{'widget': 'image', 'width': 21, 'height': 21}" role="img"/>
+                <i t-if="website and website.search_icon"
+                   t-field="website.search_icon"
+                   t-options="{'widget': 'image', 'width': 21, 'height': 21}"
+                   role="img"/>
+                <t t-else="">
+                    <i class="oi oi-search"/>
+                </t>
+
+
                 <span t-if="search" class="oe_search_found">
                     <small>(
                         <t t-out="search_count or 0"/>
